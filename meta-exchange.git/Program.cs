@@ -42,7 +42,7 @@ class Program
         var balances = JsonConvert.DeserializeObject<List<Balance>>(File.ReadAllText(balancePath));
 
         string orderType = "buy"; // Change to "sell" if needed
-        decimal btcAmount = 12;
+        decimal btcAmount = 55;
 
         var executionPlan = GetBestExecution(orderBooks, balances, orderType, btcAmount);
 
