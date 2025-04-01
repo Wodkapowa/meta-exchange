@@ -1,0 +1,15 @@
+C:\Users\Home\Documents\meta-exchange\meta-exchange.git\bin\Debug\net8.0\meta-exchange.git.exe
+C:\Users\Home\Documents\meta-exchange\meta-exchange.git\bin\Debug\net8.0\meta-exchange.git.deps.json
+C:\Users\Home\Documents\meta-exchange\meta-exchange.git\bin\Debug\net8.0\meta-exchange.git.runtimeconfig.json
+C:\Users\Home\Documents\meta-exchange\meta-exchange.git\bin\Debug\net8.0\meta-exchange.git.dll
+C:\Users\Home\Documents\meta-exchange\meta-exchange.git\bin\Debug\net8.0\meta-exchange.git.pdb
+C:\Users\Home\Documents\meta-exchange\meta-exchange.git\obj\Debug\net8.0\meta-exchange.git.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Home\Documents\meta-exchange\meta-exchange.git\obj\Debug\net8.0\meta-exchange.git.AssemblyInfoInputs.cache
+C:\Users\Home\Documents\meta-exchange\meta-exchange.git\obj\Debug\net8.0\meta-exchange.git.AssemblyInfo.cs
+C:\Users\Home\Documents\meta-exchange\meta-exchange.git\obj\Debug\net8.0\meta-exchange.git.csproj.CoreCompileInputs.cache
+C:\Users\Home\Documents\meta-exchange\meta-exchange.git\obj\Debug\net8.0\meta-exchange.git.sourcelink.json
+C:\Users\Home\Documents\meta-exchange\meta-exchange.git\obj\Debug\net8.0\meta-exchange.git.dll
+C:\Users\Home\Documents\meta-exchange\meta-exchange.git\obj\Debug\net8.0\refint\meta-exchange.git.dll
+C:\Users\Home\Documents\meta-exchange\meta-exchange.git\obj\Debug\net8.0\meta-exchange.git.pdb
+C:\Users\Home\Documents\meta-exchange\meta-exchange.git\obj\Debug\net8.0\meta-exchange.git.genruntimeconfig.cache
+C:\Users\Home\Documents\meta-exchange\meta-exchange.git\obj\Debug\net8.0\ref\meta-exchange.git.dll
