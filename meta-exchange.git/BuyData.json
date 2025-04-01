@@ -18,15 +18,75 @@
     "Asks": [
 	{
         "Price": 3000,
-        "Amount": 7
-      },
-      {
-        "Price": 3300,
         "Amount": 4
       },
       {
+        "Price": 3300,
+        "Amount": 6.7
+      },
+      {
         "Price": 3500,
-        "Amount": 9
+        "Amount": 7
+      },]
+  },
+  {
+    "Exchange": "Exchange2",
+    "Bids": [
+      {
+        "Price": 3002,
+        "Amount": 7
+      },
+      {
+        "Price": 3302,
+        "Amount": 2
+      },
+      {
+        "Price": 3502,
+        "Amount": 1
+      },
+    ],
+    "Asks": [
+	{
+        "Price": 3002,
+        "Amount": 2
+      },
+      {
+        "Price": 3302,
+        "Amount": 6.7
+      },
+      {
+        "Price": 3502,
+        "Amount": 3
+      },]
+  },
+  {
+    "Exchange": "Exchange3",
+    "Bids": [
+      {
+        "Price": 3003,
+        "Amount": 7
+      },
+      {
+        "Price": 3303,
+        "Amount": 2
+      },
+      {
+        "Price": 3503,
+        "Amount": 1
+      },
+    ],
+    "Asks": [
+	{
+        "Price": 3003,
+        "Amount": 2
+      },
+      {
+        "Price": 3303,
+        "Amount": 6.7
+      },
+      {
+        "Price": 3503,
+        "Amount": 3
       },]
   }
 ]
