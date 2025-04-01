@@ -13,3 +13,6 @@ C:\Users\Home\Documents\meta-exchange\meta-exchange.git\obj\Debug\net8.0\refint\
 C:\Users\Home\Documents\meta-exchange\meta-exchange.git\obj\Debug\net8.0\meta-exchange.git.pdb
 C:\Users\Home\Documents\meta-exchange\meta-exchange.git\obj\Debug\net8.0\meta-exchange.git.genruntimeconfig.cache
 C:\Users\Home\Documents\meta-exchange\meta-exchange.git\obj\Debug\net8.0\ref\meta-exchange.git.dll
+C:\Users\Home\Documents\meta-exchange\meta-exchange.git\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\Home\Documents\meta-exchange\meta-exchange.git\obj\Debug\net8.0\meta-exchange.git.csproj.AssemblyReference.cache
+C:\Users\Home\Documents\meta-exchange\meta-exchange.git\obj\Debug\net8.0\meta-exc.801605C2.Up2Date

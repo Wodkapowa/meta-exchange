@@ -5,6 +5,14 @@
     {
       "AbsoluteMoniker": "D:0:0:{242AB1B4-EC11-4A43-A3F7-408D483EA7E6}|meta-exchange.git.csproj|c:\\users\\home\\documents\\meta-exchange\\meta-exchange.git\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{242AB1B4-EC11-4A43-A3F7-408D483EA7E6}|meta-exchange.git.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{242AB1B4-EC11-4A43-A3F7-408D483EA7E6}|meta-exchange.git.csproj|c:\\users\\home\\documents\\meta-exchange\\meta-exchange.git\\order_books_data||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{242AB1B4-EC11-4A43-A3F7-408D483EA7E6}|meta-exchange.git.csproj|solutionrelative:order_books_data||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{242AB1B4-EC11-4A43-A3F7-408D483EA7E6}|meta-exchange.git.csproj|c:\\users\\home\\documents\\meta-exchange\\meta-exchange.git\\meta-exchange.git.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{242AB1B4-EC11-4A43-A3F7-408D483EA7E6}|meta-exchange.git.csproj|solutionrelative:meta-exchange.git.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,11 +22,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "order_books_data",
+              "DocumentMoniker": "C:\\Users\\Home\\Documents\\meta-exchange\\meta-exchange.git\\order_books_data",
+              "RelativeDocumentMoniker": "order_books_data",
+              "ToolTip": "C:\\Users\\Home\\Documents\\meta-exchange\\meta-exchange.git\\order_books_data",
+              "RelativeToolTip": "order_books_data",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-04-01T22:26:13.811Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "meta-exchange.git",
+              "DocumentMoniker": "C:\\Users\\Home\\Documents\\meta-exchange\\meta-exchange.git\\meta-exchange.git.csproj",
+              "RelativeDocumentMoniker": "meta-exchange.git.csproj",
+              "ToolTip": "C:\\Users\\Home\\Documents\\meta-exchange\\meta-exchange.git\\meta-exchange.git.csproj",
+              "RelativeToolTip": "meta-exchange.git.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-04-01T21:54:53.675Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -28,7 +62,7 @@
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\Home\\Documents\\meta-exchange\\meta-exchange.git\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADMAAAAAAAAAAAAawEAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-01T21:46:53.554Z",
               "EditorCaption": ""
