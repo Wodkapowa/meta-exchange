@@ -47,10 +47,10 @@ class Program
         var executionPlan = GetBestExecution(orderBooks, balances, orderType, btcAmount);
 
         Console.WriteLine("Execution Plan:");
-        foreach (var trade in executionPlan)
-        {
-            Console.WriteLine($"Exchange: {trade.Exchange}, Price: {trade.Price}, Amount: {trade.Amount}");
-        }
+        //foreach (var trade in executionPlan)
+        //{
+        //    Console.WriteLine($"Exchange: {trade.Exchange}, Price: {trade.Price}, Amount: {trade.Amount}");
+        //}
     }
 
     static List<Trade> GetBestExecution(List<OrderBook> orderBooks, List<Balance> balances, string orderType, decimal btcAmount)
@@ -81,6 +81,9 @@ class Program
             else balance.BTC -= amountToTrade;
 
             btcAmount -= amountToTrade;
+
+            Console.WriteLine($"Exchange: {order.Exchange}, Price: {order.Price}, Amount: {amountToTrade:F4}, Remaining BTC to {orderType}: {btcAmount:F4}, balance left eur {balance.EUR:F4}");
+
             if (btcAmount <= 0) break;
         }
 
