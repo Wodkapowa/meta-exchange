@@ -6,9 +6,14 @@ using System.Linq;
 
 public class OrderBook
 {
-    public string Exchange { get; set; }
-    public List<Order> Bids { get; set; }  // Buy orders
-    public List<Order> Asks { get; set; }  // Sell orders
+    public string AcqTime { get; set; }  // Timestamp from JSON
+    public List<OrderWrapper> Bids { get; set; }  // Buy orders
+    public List<OrderWrapper> Asks { get; set; }  // Sell orders
+}
+
+public class OrderWrapper
+{
+    public Order Order { get; set; }  // Order containing price and amount
 }
 
 public class Order
@@ -19,7 +24,7 @@ public class Order
 
 public class Balance
 {
-    public string Exchange { get; set; }
+    public string Exchange { get; set; }  // Exchange name, can be matched with AcqTime
     public decimal BTC { get; set; }
     public decimal EUR { get; set; }
 }
@@ -38,17 +43,21 @@ class Program
         string orderBookPath = "../../../BuyData.json";  // Path to your single order book JSON file
         string balancePath = "../../../Balance.json";   // Path to your balance JSON file
 
-        // Deserialize single order book (not a list anymore)
+        // Deserialize single order book (list of order books)
         var orderBooks = JsonConvert.DeserializeObject<List<OrderBook>>(File.ReadAllText(orderBookPath));
         var balances = JsonConvert.DeserializeObject<List<Balance>>(File.ReadAllText(balancePath));
-        
-        string orderType = "buy"; // Change to "sell" if needed
-        decimal btcAmount = 55;
 
+        string orderType = "buy";  // Change to "sell" if needed
+        decimal btcAmount = 552;  // Amount of BTC to buy or sell
 
         Console.WriteLine("Execution Plan:");
         var executionPlan = GetBestExecution(orderBooks, balances, orderType, btcAmount);
 
+        //// Print execution plan (trades)
+        //foreach (var trade in executionPlan)
+        //{
+        //    Console.WriteLine($"Exchange: {trade.Exchange}, Price: {trade.Price}, Amount: {trade.Amount}");
+        //}
     }
 
     static List<Trade> GetBestExecution(List<OrderBook> orderBooks, List<Balance> balances, string orderType, decimal btcAmount)
@@ -56,33 +65,36 @@ class Program
         var trades = new List<Trade>();
 
         var sortedOrders = orderType == "buy"
-            ? orderBooks.SelectMany(ob => ob.Asks.Select(a => new { ob.Exchange, a.Price, a.Amount }))
-                        .OrderBy(o => o.Price).ToList()
-            : orderBooks.SelectMany(ob => ob.Bids.Select(b => new { ob.Exchange, b.Price, b.Amount }))
-                        .OrderByDescending(o => o.Price).ToList();
+            ? orderBooks.SelectMany(ob => ob.Asks.Select(a => new { ob.AcqTime, a.Order.Price, a.Order.Amount }))
+                        .OrderBy(o => o.Price).ToList()  // For buy, we need the lowest price
+            : orderBooks.SelectMany(ob => ob.Bids.Select(b => new { ob.AcqTime, b.Order.Price, b.Order.Amount }))
+                        .OrderByDescending(o => o.Price).ToList();  // For sell, we need the highest price
 
         foreach (var order in sortedOrders)
         {
-            var balance = balances.FirstOrDefault(b => b.Exchange == order.Exchange);
+            var balance = balances.FirstOrDefault(b => b.Exchange == order.AcqTime);  // Match balance based on AcqTime
+
             if (balance == null) continue;
 
             decimal availableAmount = orderType == "buy"
-                ? Math.Min(order.Amount, balance.EUR / order.Price)
-                : Math.Min(order.Amount, balance.BTC);
+                ? Math.Min(order.Amount, balance.EUR / order.Price)  // For buy, use EUR balance
+                : Math.Min(order.Amount, balance.BTC);  // For sell, use BTC balance
 
             if (availableAmount <= 0) continue;
 
             decimal amountToTrade = Math.Min(btcAmount, availableAmount);
-            trades.Add(new Trade { Exchange = order.Exchange, Price = order.Price, Amount = amountToTrade });
+            trades.Add(new Trade { Exchange = order.AcqTime, Price = order.Price, Amount = amountToTrade });
 
+            // Update balance based on the order type
             if (orderType == "buy") balance.EUR -= amountToTrade * order.Price;
             else balance.BTC -= amountToTrade;
 
             btcAmount -= amountToTrade;
 
-            Console.WriteLine($"Exchange: {order.Exchange}, Price: {order.Price}, Amount: {amountToTrade:F4}, Remaining BTC to {orderType}: {btcAmount:F4}, balance left eur {balance.EUR:F4}");
+            // Print trade details
+            Console.WriteLine($"Exchange: {order.AcqTime}, Price: {order.Price}, Amount: {amountToTrade:F4}, Remaining BTC to {orderType}: {btcAmount:F4}, balance left EUR: {balance.EUR:F4}");
 
-            if (btcAmount <= 0) break;
+            if (btcAmount <= 0) break;  // Exit if no more BTC to trade
         }
 
         return trades;
