@@ -47,17 +47,12 @@ class Program
         var orderBooks = JsonConvert.DeserializeObject<List<OrderBook>>(File.ReadAllText(orderBookPath));
         var balances = JsonConvert.DeserializeObject<List<Balance>>(File.ReadAllText(balancePath));
 
-        string orderType = "buy";  // Change to "sell" if needed
-        decimal btcAmount = 552;  // Amount of BTC to buy or sell
+        string orderType = "sell";  // Change to "sell" if needed
+        decimal btcAmount = 202;  // Amount of BTC to buy or sell
 
         Console.WriteLine("Execution Plan:");
         var executionPlan = GetBestExecution(orderBooks, balances, orderType, btcAmount);
 
-        //// Print execution plan (trades)
-        //foreach (var trade in executionPlan)
-        //{
-        //    Console.WriteLine($"Exchange: {trade.Exchange}, Price: {trade.Price}, Amount: {trade.Amount}");
-        //}
     }
 
     static List<Trade> GetBestExecution(List<OrderBook> orderBooks, List<Balance> balances, string orderType, decimal btcAmount)
@@ -92,7 +87,7 @@ class Program
             btcAmount -= amountToTrade;
 
             // Print trade details
-            Console.WriteLine($"Exchange: {order.AcqTime}, Price: {order.Price}, Amount: {amountToTrade:F4}, Remaining BTC to {orderType}: {btcAmount:F4}, balance left EUR: {balance.EUR:F4}");
+            Console.WriteLine($"Exchange: {order.AcqTime}, Price: {order.Price}, Amount: {amountToTrade:F4}, Remaining BTC to {orderType}: {btcAmount:F4}");
 
             if (btcAmount <= 0) break;  // Exit if no more BTC to trade
         }

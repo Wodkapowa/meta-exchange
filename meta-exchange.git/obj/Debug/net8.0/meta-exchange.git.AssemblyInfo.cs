@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("meta-exchange.git")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+be502db1595af2aefbebabf950e957c4ff2b4169")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+44dd762e536f3b311b828fa756344d35d9a2e31d")]
 [assembly: System.Reflection.AssemblyProductAttribute("meta-exchange.git")]
 [assembly: System.Reflection.AssemblyTitleAttribute("meta-exchange.git")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
