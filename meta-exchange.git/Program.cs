@@ -1,30 +1,30 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Newtonsoft.Json;
 
-class OrderBook
+public class OrderBook
 {
     public string Exchange { get; set; }
-    public List<Order> Bids { get; set; }
-    public List<Order> Asks { get; set; }
+    public List<Order> Bids { get; set; }  // Buy orders
+    public List<Order> Asks { get; set; }  // Sell orders
 }
 
-class Order
+public class Order
 {
     public decimal Price { get; set; }
     public decimal Amount { get; set; }
 }
 
-class Balance
+public class Balance
 {
     public string Exchange { get; set; }
-    public decimal EUR { get; set; }
     public decimal BTC { get; set; }
+    public decimal EUR { get; set; }
 }
 
-class Trade
+public class Trade
 {
     public string Exchange { get; set; }
     public decimal Price { get; set; }
@@ -35,22 +35,20 @@ class Program
 {
     static void Main(string[] args)
     {
-        string orderBookPath = "../../../BuyData.json"; // Adjust file path
-        string balancePath = "../../../Balance.json";
+        string orderBookPath = "../../../BuyData.json";  // Path to your single order book JSON file
+        string balancePath = "../../../Balance.json";   // Path to your balance JSON file
 
+        // Deserialize single order book (not a list anymore)
         var orderBooks = JsonConvert.DeserializeObject<List<OrderBook>>(File.ReadAllText(orderBookPath));
         var balances = JsonConvert.DeserializeObject<List<Balance>>(File.ReadAllText(balancePath));
-
+        
         string orderType = "buy"; // Change to "sell" if needed
         decimal btcAmount = 55;
 
-        var executionPlan = GetBestExecution(orderBooks, balances, orderType, btcAmount);
 
         Console.WriteLine("Execution Plan:");
-        //foreach (var trade in executionPlan)
-        //{
-        //    Console.WriteLine($"Exchange: {trade.Exchange}, Price: {trade.Price}, Amount: {trade.Amount}");
-        //}
+        var executionPlan = GetBestExecution(orderBooks, balances, orderType, btcAmount);
+
     }
 
     static List<Trade> GetBestExecution(List<OrderBook> orderBooks, List<Balance> balances, string orderType, decimal btcAmount)
@@ -89,10 +87,4 @@ class Program
 
         return trades;
     }
-}
-
-public class ExecutionRequest
-{
-    public string OrderType { get; set; }
-    public decimal BtcAmount { get; set; }
 }

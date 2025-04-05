@@ -1,92 +1,41 @@
 [
   {
-    "Exchange": "Exchange1",
-    "Bids": [
-      {
-        "Price": 3000,
-        "Amount": 7
-      },
-      {
-        "Price": 3300,
-        "Amount": 4
-      },
-      {
-        "Price": 3500,
-        "Amount": 9
-      },
-    ],
+    "Exchange": "ExchangeA",
     "Asks": [
-	{
-        "Price": 3000,
-        "Amount": 4
-      },
-      {
-        "Price": 3300,
-        "Amount": 6.7
-      },
-      {
-        "Price": 3500,
-        "Amount": 7
-      },]
+      { "Price": 30000, "Amount": 1 },
+      { "Price": 29000, "Amount": 1.5 },
+      { "Price": 28000, "Amount": 2 }
+    ],
+    "Bids": [
+      { "Price": 27000, "Amount": 1 },
+      { "Price": 26000, "Amount": 2 },
+      { "Price": 25000, "Amount": 1.5 }
+    ]
   },
   {
-    "Exchange": "Exchange2",
-    "Bids": [
-      {
-        "Price": 3002,
-        "Amount": 7
-      },
-      {
-        "Price": 3302,
-        "Amount": 2
-      },
-      {
-        "Price": 3502,
-        "Amount": 1
-      },
-    ],
+    "Exchange": "ExchangeB",
     "Asks": [
-	{
-        "Price": 3002,
-        "Amount": 2
-      },
-      {
-        "Price": 3302,
-        "Amount": 6.7
-      },
-      {
-        "Price": 3502,
-        "Amount": 3
-      },]
+      { "Price": 32000, "Amount": 0.8 },
+      { "Price": 31000, "Amount": 1 },
+      { "Price": 30500, "Amount": 1.2 }
+    ],
+    "Bids": [
+      { "Price": 30000, "Amount": 1.5 },
+      { "Price": 29500, "Amount": 1 },
+      { "Price": 29000, "Amount": 2 }
+    ]
   },
   {
-    "Exchange": "Exchange3",
-    "Bids": [
-      {
-        "Price": 3003,
-        "Amount": 7
-      },
-      {
-        "Price": 3303,
-        "Amount": 2
-      },
-      {
-        "Price": 3503,
-        "Amount": 1
-      },
-    ],
+    "Exchange": "ExchangeC",
     "Asks": [
-	{
-        "Price": 3003,
-        "Amount": 2
-      },
-      {
-        "Price": 3303,
-        "Amount": 6.7
-      },
-      {
-        "Price": 3503,
-        "Amount": 3
-      },]
+      { "Price": 28000, "Amount": 3 },
+      { "Price": 27000, "Amount": 1.5 },
+      { "Price": 26000, "Amount": 2 }
+    ],
+    "Bids": [
+      { "Price": 25000, "Amount": 2.5 },
+      { "Price": 24000, "Amount": 1 },
+      { "Price": 23000, "Amount": 1.5 }
+    ]
   }
 ]

@@ -1,22 +1,17 @@
 [
   {
-    "Exchange": "Exchange1",
-    "EUR": 3000,
-    "BTC": 9
+    "Exchange": "ExchangeA",
+    "BTC": 2.5,
+    "EUR": 100000
   },
   {
-    "Exchange": "Exchange2",
-    "EUR": 60000,
-    "BTC": 8
+    "Exchange": "ExchangeB",
+    "BTC": 1.5,
+    "EUR": 50000
   },
   {
-    "Exchange": "Exchange3",
-    "EUR": 44444,
-    "BTC": 3.5
-  },
-  {
-    "Exchange": "Exchange4",
-    "EUR": 900.0,
-    "BTC": 1.0
+    "Exchange": "ExchangeC",
+    "BTC": 3,
+    "EUR": 150000
   }
 ]
