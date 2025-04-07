@@ -1,0 +1,24 @@
+services:
+  cryptoexecutionservice:
+    build:
+      context: ./CryptoExecutionService
+    restart: unless-stopped
+    init: true
+    ports:
+      - "8080:80"
+    depends_on:
+      - metaexchange
+    networks:
+      - app_network
+  metaexchange:
+    build:
+      context: ./meta-exchange.git
+    restart: unless-stopped
+    init: true
+    ports:
+      - "8081:80"
+    networks:
+      - app_network
+networks:
+  app_network:
+    driver: bridge
