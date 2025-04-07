@@ -1,0 +1,6 @@
+@CryptoExecutionService_HostAddress = http://localhost:5292
+
+GET {{CryptoExecutionService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
