@@ -1,8 +1,10 @@
 ﻿using CryptoExecutionService.Models;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
-[Route("api/[controller]")]
+
 [ApiController]
+[Route("api/[controller]")]
 public class ExecutionController : ControllerBase
 {
     private readonly ExecutionService _executionService;
@@ -12,47 +14,31 @@ public class ExecutionController : ControllerBase
         _executionService = executionService;
     }
 
-    [HttpPost("GetBestExecution")]
-    public ActionResult<List<Trade>> GetBestExecution([FromBody] ExecutionRequest request)
+    [HttpPost("execute")]
+    public IActionResult ExecuteOrder([FromBody] ExecutionRequest request)
     {
-        // Example of order book data
-        var orderBooks = new List<OrderBook>
+        try
         {
-            new OrderBook
-            {
-                Exchange = "ExchangeA",
-                Bids = new List<Order>
-                {
-                    new Order { Price = 2960.5m, Amount = 0.5m },
-                    new Order { Price = 2959.7m, Amount = 1.0m }
-                },
-                Asks = new List<Order>
-                {
-                    new Order { Price = 3000m, Amount = 0.1m },
-                    new Order { Price = 3050m, Amount = 0.5m }
-                }
-            }
-        };
+            // Validate input
+            if (request.BtcAmount <= 0)
+                return BadRequest("BTC amount must be greater than zero.");
+            if (string.IsNullOrEmpty(request.OrderType) || !(request.OrderType.ToLower() == "buy" || request.OrderType.ToLower() == "sell"))
+                return BadRequest("Invalid order type. Please specify 'buy' or 'sell'.");
 
-        // Example of balances
-        var balances = new List<Balance>
-        {
-            new Balance
-            {
-                Exchange = "ExchangeA",
-                BTC = 1.5m,
-                EUR = 10000m
-            }
-        };
+            // Load order book and balances from JSON files
+            var orderBooks = JsonConvert.DeserializeObject<List<OrderBook>>(System.IO.File.ReadAllText("BuyData.json"));
+            var balances = JsonConvert.DeserializeObject<List<Balance>>(System.IO.File.ReadAllText("Balance.json"));
 
-        // Call the service to get the best execution plan
-        var trades = _executionService.GetBestExecution(orderBooks, balances, request.OrderType, request.BtcAmount);
+            var executionPlan = _executionService.GetBestExecution(orderBooks, balances, request.OrderType, request.BtcAmount);
 
-        if (trades.Count == 0)
-        {
-            return NotFound("No trades could be executed.");
+            if (executionPlan.Count == 0)
+                return NotFound("No suitable execution plan found.");
+
+            return Ok(executionPlan);
         }
-
-        return Ok(trades);
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Internal server error: {ex.Message}");
+        }
     }
 }
