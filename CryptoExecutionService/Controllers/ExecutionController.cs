@@ -2,9 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
-
-[ApiController]
 [Route("api/[controller]")]
+[ApiController]
 public class ExecutionController : ControllerBase
 {
     private readonly ExecutionService _executionService;
@@ -14,8 +13,8 @@ public class ExecutionController : ControllerBase
         _executionService = executionService;
     }
 
-    [HttpPost("execute")]
-    public IActionResult ExecuteOrder([FromBody] ExecutionRequest request)
+    [HttpPost("GetBestExecution")]
+    public ActionResult<List<Trade>> GetBestExecution([FromBody] ExecutionRequest request)
     {
         try
         {
@@ -29,16 +28,20 @@ public class ExecutionController : ControllerBase
             var orderBooks = JsonConvert.DeserializeObject<List<OrderBook>>(System.IO.File.ReadAllText("BuyData.json"));
             var balances = JsonConvert.DeserializeObject<List<Balance>>(System.IO.File.ReadAllText("Balance.json"));
 
-            var executionPlan = _executionService.GetBestExecution(orderBooks, balances, request.OrderType, request.BtcAmount);
+            // Call the service to get the best execution plan
+            var trades = _executionService.GetBestExecution(orderBooks, balances, request.OrderType, request.BtcAmount);
 
-            if (executionPlan.Count == 0)
-                return NotFound("No suitable execution plan found.");
+            if (trades.Count == 0)
+            {
+                return NotFound("No trades could be executed.");
+            }
 
-            return Ok(executionPlan);
+            return Ok(trades);
         }
         catch (Exception ex)
         {
             return StatusCode(500, $"Internal server error: {ex.Message}");
         }
     }
+
 }

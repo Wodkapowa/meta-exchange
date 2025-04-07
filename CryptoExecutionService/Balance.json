@@ -1,0 +1,12 @@
+[
+  {
+    "Exchange": "2019-01-29T11:00:10.0024503Z",  // Same as AcqTime in OrderBook
+    "BTC": 10,  // Available BTC to sell
+    "EUR": 1000000  // Available EUR to buy BTC
+  },
+  {
+    "Exchange": "2019-01-29T11:00:20.1234567Z",  // Another exchange timestamp
+    "BTC": 5,  // Available BTC to sell
+    "EUR": 5000  // Available EUR to buy BTC
+  }
+]

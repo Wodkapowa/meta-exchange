@@ -2,9 +2,14 @@
 {
     public class OrderBook
     {
-        public string Exchange { get; set; }
-        public List<Order> Bids { get; set; }
-        public List<Order> Asks { get; set; }
+        public string AcqTime { get; set; }  // Timestamp from JSON
+        public List<OrderWrapper> Bids { get; set; }  // Buy orders
+        public List<OrderWrapper> Asks { get; set; }  // Sell orders
+    }
+
+    public class OrderWrapper
+    {
+        public Order Order { get; set; }  // Order containing price and amount
     }
 
     public class Order
