@@ -37,5 +37,4 @@
         public string OrderType { get; set; }
         public decimal BtcAmount { get; set; }
     }
-
 }
