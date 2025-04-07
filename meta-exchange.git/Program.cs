@@ -1,8 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 
 public class OrderBook
 {
@@ -48,7 +44,7 @@ class Program
         var balances = JsonConvert.DeserializeObject<List<Balance>>(File.ReadAllText(balancePath));
 
         string orderType = "sell";  // Change to "sell" if needed
-        decimal btcAmount = 202;  // Amount of BTC to buy or sell
+        decimal btcAmount = 9.2m;  // Amount of BTC to buy or sell
 
         Console.WriteLine("Execution Plan:");
         var executionPlan = GetBestExecution(orderBooks, balances, orderType, btcAmount);
