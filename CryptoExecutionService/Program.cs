@@ -8,6 +8,11 @@ builder.Services.AddOpenApi();
 builder.Services.AddSingleton<ExecutionService>();  // Register the ExecutionService
 builder.Services.AddControllers();  // Register controllers for the API
 
+builder.WebHost.ConfigureKestrel(serverOptions =>
+{
+    serverOptions.ListenAnyIP(5292); // Enables container access
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

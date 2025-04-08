@@ -4,19 +4,16 @@
 ARG DOTNET_VERSION=9.0
 
 # Stage 1: Build the application
-FROM mcr.microsoft.com/dotnet/sdk:${DOTNET_VERSION} AS builder
-WORKDIR /source
+FROM mcr.microsoft.com/dotnet/sdk:${DOTNET_VERSION}-windowsservercore-ltsc2022 AS builder
 
 # Copy the project file and restore dependencies
 COPY CryptoExecutionService.csproj .
-RUN --mount=type=cache,target=/root/.nuget/packages \
-    --mount=type=cache,target=/root/.cache/msbuild \
-    dotnet restore
+RUN  dotnet restore
 
 # Copy the rest of the application source code
-COPY . .
+COPY meta-exchange.git/ .
 
-# Build and publish the application
+# Build the application
 RUN dotnet publish -c Release -o /app/publish
 
 # Stage 2: Create the runtime image
@@ -35,3 +32,6 @@ EXPOSE 80
 
 # Define the entry point for the application
 ENTRYPOINT ["dotnet", "CryptoExecutionService.dll"]
+
+
+
