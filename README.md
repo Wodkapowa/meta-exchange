@@ -1,22 +1,23 @@
-# 🔁 Meta-Exchange
+# Meta Exchange Optimizer
 
-A .NET Core API that determines and executes the **optimal BTC trade strategy** across multiple cryptocurrency exchanges, based on real-time balances and pricing. Designed for precision trading and ease of deployment.
+A .NET Core console application that executes optimal BTC buy/sell orders across multiple crypto exchanges, considering individual exchange balances and market prices. 
 
-## 📦 Features
+## Features
 
-- Optimal execution plan for BTC buy/sell orders
-- Balance-aware and exchange-isolated execution (no fund transfers)
-- Dockerized .NET 9 API
-- Extensible architecture for adding real exchanges
+- Optimally distributes BTC buy/sell orders across multiple exchanges.
+- Considers current EUR/BTC balances for each exchange.
+- Prevents fund transfers between exchanges.
+- Outputs best execution plan with summary.
+- Future API support via Kestrel (.NET Core Web API).
 
----
+## Sample Input
 
-## 🚀 Getting Started
-
-### Prerequisites
-
-- [.NET 9 SDK](https://dotnet.microsoft.com/)
-- [Docker](https://www.docker.com/products/docker-desktop)
-- Optional: Postman or curl for testing
-
----
+```json
+{
+  "orderType": "buy",
+  "btcAmount": 1.5,
+  "balances": [
+    { "exchange": "Exchange1", "EUR": 10000, "BTC": 0.5 },
+    { "exchange": "Exchange2", "EUR": 8000, "BTC": 1.0 }
+  ]
+}
